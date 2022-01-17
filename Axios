@@ -1,0 +1,26 @@
+ <script> src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js" </script>
+        <script>
+            function saveToLocalStorage(event) {
+                event.preventDefault();
+                const name = event.target.username.value;
+                const email = event.target.emailId.value;
+                const phonenumber = event.target.phonenumber.value;
+                // localStorage.setItem('name', name);
+                // localStorage.setItem('email', email);
+                // localStorage.setItem('phonenumber', phonenumber)
+                const obj = {
+                    name,
+                    email,
+                    phonenumber
+                }
+                axios.post("https://crudcrud.com/api/018829ed7a5e4a95a3e4328c069510b5/appointmentData", obj)
+                .then((response) => {
+                  showNewUserOnScreen(response.data)
+                  console.log(response)
+                })
+                .catch((err) => {
+                  console.log(err)
+                })
+                //localStorage.setItem(obj.email, JSON.stringify(obj))
+                //showNewUserOnScreen(obj)
+            }
